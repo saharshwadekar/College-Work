@@ -1,0 +1,14 @@
+UNIT 5 AWS Question Bank, ACN Subject
+2 marks questions:
+1.      Define cloud computing and list two characteristics of cloud services.
+2.      What is EC2 in AWS, and how is it used?
+3.      Name three types of EC2 instances and briefly explain their differences.
+4.      Define AWS S3 and its primary purpose.
+5.      Briefly explain the concept of Elastic Block Storage (EBS) in AWS.
+5-8 Marks Questions:
+1.      Discuss the key characteristics of cloud computing and their significance.
+2.      Explain the main features of EC2 instances and how they can be customised.
+3.      Discuss Amazon S3 in terms of storage services.
+4.      Explain the different storage classes available in Amazon S3 and their purposes.
+5. Discuss the role of  IAM and its importance.
+6. Elaborate the various cloud computing deployment models in brief.
