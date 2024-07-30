@@ -23,7 +23,7 @@ bool identifyComment(string s)
         }
         else if (s[i] == '*' && s[i + 1] == '/')
             count++;
-            
+
         if (count == 2)
             return true;
     }
@@ -46,3 +46,4 @@ int main()
         cout << "Your string does not consist of comment";
     return 0;
 }
+
