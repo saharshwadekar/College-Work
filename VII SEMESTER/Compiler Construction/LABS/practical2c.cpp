@@ -27,15 +27,17 @@ bool isIdentifier(string s)
         {'u', {"union", "unsigned", "using"}},
         {'v', {"virtual", "void", "volatile"}},
         {'w', {"wchar_t", "while"}},
-        {'x', {"xor", "xor_eq"}}
-    };
+        {'x', {"xor", "xor_eq"}}};
 
-    for (const auto& key : keyword_map) {
+    for (const auto &key : keyword_map)
+    {
 
         if (s[0] == key.first)
         {
-            for (const auto& keyword : key.second) {
-                if(s == keyword){
+            for (const auto &keyword : key.second)
+            {
+                if (s == keyword)
+                {
                     return true;
                 }
             }
@@ -44,13 +46,15 @@ bool isIdentifier(string s)
     return false;
 }
 
-int main() {
+int main()
+{
     string s;
     cout << "Enter Your String : ";
     cin >> s;
-    if(isIdentifier(s))
-        cout << "Entered string is Identifier.";
+
+    if (isIdentifier(s))
+        cout << "string is Identifier.";
     else
-        cout << "Entered string is non Identifer.";
+        cout << "string is non Identifer.";
     return 0;
-}
+} 
