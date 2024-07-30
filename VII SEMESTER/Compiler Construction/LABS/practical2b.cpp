@@ -22,9 +22,8 @@ bool identifyComment(string s)
             }
         }
         else if (s[i] == '*' && s[i + 1] == '/')
-        {
             count++;
-        }
+            
         if (count == 2)
             return true;
     }
