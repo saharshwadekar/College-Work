@@ -1,0 +1,1 @@
+Assisting a doctor in diagnosis desease from medical images or patient data
