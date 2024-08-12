@@ -1,8 +1,10 @@
+import random
 def simpleColumnar(inputText: str, column: int):
     row: int = (len(inputText) / column).__ceil__()
-    inputText += "*" * (row * column - len(inputText))
 
     if inputText.islower():
+        while(len(inputText) < row*column):
+            inputText += random.choice("".join(ch for ch in 'abcdefghijklmnopqrstuvwxyz' if ch not in [*inputText])) * (row*column - len(inputText)) 
         matrix: list[str] = [
             inputText[i : i + column] for i in range(0, len(inputText), column)
         ]
@@ -18,6 +20,8 @@ def simpleColumnar(inputText: str, column: int):
         print('-'*40)
         print("Encrypted:", encrypt)
     else:
+        while(len(inputText) < row*column):
+            inputText += random.choice("".join(ch for ch in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' if ch not in [*inputText])) * (row*column - len(inputText)) 
         matrix: list[list[chr]] = [ list(" ") * column for r in range(row)]
         
         i: int = 0

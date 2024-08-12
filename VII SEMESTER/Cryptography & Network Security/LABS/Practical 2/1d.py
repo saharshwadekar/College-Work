@@ -1,10 +1,10 @@
+import random
 def hybridTransposition(inputText: str, enkey: list[list[int]]) -> None:
     enkey: list[list[int]] = list(map(list, enumerate(enkey, start=1)))
     dekey: list[list[int]] = sorted(enkey, key=lambda x: x[1])
 
     col: int = len(enkey)
     row: int = (len(inputText) / col).__ceil__()
-    inputText += "*" * ((row * col) - len(inputText))
 
     enkey: list[int] = [x[1] for x in enkey]
     dekey: list[int] = [x[0] for x in dekey]
@@ -12,6 +12,9 @@ def hybridTransposition(inputText: str, enkey: list[list[int]]) -> None:
     result = ""
 
     if inputText.islower():
+        while(len(inputText) < row*col):
+            inputText += random.choice("".join(ch for ch in 'abcdefghijklmnopqrstuvwxyz' if ch not in [*inputText])) * (row*col - len(inputText)) 
+        
         print(f'Encrypted Key: ', enkey)
         print('-'*40)
         
@@ -28,6 +31,8 @@ def hybridTransposition(inputText: str, enkey: list[list[int]]) -> None:
         
         print(f'Encrypted: ',result)
     else:
+        while(len(inputText) < row*col):
+            inputText += random.choice("".join(ch for ch in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' if ch not in [*inputText])) * (row*col - len(inputText)) 
         print(f'Decrypted Key: ', dekey)
         print('-'*40)
         
