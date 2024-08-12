@@ -8,6 +8,8 @@ def func(inputText: str, enkey: list[list[int]]) -> str:
 
     enkey: list[int] = [x[1] for x in enkey]
     dekey: list[int] = [x[0] for x in dekey]
+    print(f'Encrypted Key: ', enkey)
+    print(f'Decrypted Key: ', dekey)
 
     result = ""
 
@@ -15,17 +17,30 @@ def func(inputText: str, enkey: list[list[int]]) -> str:
         matrix: list[list[chr]] = [
             inputText[x : x + col] for x in range(0, len(inputText), col)
         ]
-        for col in enkey:
+        for text in matrix:
+            print(*text, sep=" ")
+
+        for e in enkey:
             for l in matrix:
-                result += l[col - 1].upper()
+                result += l[e - 1].upper()
+                
         return result
     else:
-        matrix: list[list[chr]] = [
-            inputText[x : x + row] for x in range(0, len(inputText), row)
-        ]
-        for r in range(row):
+        matrix: list[list[chr]] = [ list(" ") * col for r in range(row)]
+        
+        i: int = 0
+        for c in range(col):
+            for r in range(row):
+                matrix[r][c] = inputText[i]
+                i+=1
+                
+        for text in matrix:
+            print(*text, sep=" ")
+            
+        for l in matrix:
             for d in dekey:
-                result += matrix[d - 1][r].lower()
+                result += l[d - 1].lower()
+                
         return result
 
 
