@@ -48,21 +48,20 @@ def decrypt(inputText: str, key: int) -> str:
 
 
 def main() -> None:
+    print(f'{'start':-^40}')
     inputText: str = input("Enter your String :").strip().replace(" ", "")
     key: int = int(input("Enter Key: "))
 
+    print("-" * 40)
     if inputText.islower():
-        print("-" * 40)
         res = encrypt(inputText, key)
         print("-" * 40)
         print("Encrypt :", res)
-        print("-" * 40)
     else:
-        print("-" * 40)
         res = decrypt(inputText, key)
         print("-" * 40)
         print("Decrypt :", res)
-        print("-" * 40)
+    print(f'{'end':-^40}')
 
 
 if __name__ == "__main__":

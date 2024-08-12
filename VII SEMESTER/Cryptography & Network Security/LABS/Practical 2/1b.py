@@ -1,40 +1,50 @@
 def simpleColumnar(inputText: str, column: int):
     row: int = (len(inputText) / column).__ceil__()
-    while len(inputText) < row * column:
-        inputText += "&"
+    inputText += "*" * (row * column - len(inputText))
+
     if inputText.islower():
         matrix: list[str] = [
             inputText[i : i + column] for i in range(0, len(inputText), column)
         ]
+        
         encrypt: str = ""
         for text in matrix:
             print(*text, sep=" ")
+            
         for i in range(column):
             for text in matrix:
                 encrypt += text[i].upper()
 
-        print(encrypt)
+        print('-'*40)
+        print("Encrypted:", encrypt)
     else:
-        matrix: list[str] = [
-            inputText[i : i + row] for i in range(0, len(inputText), row)
-        ]
-        print(matrix)
-        decrypt: str = ""
+        matrix: list[list[chr]] = [ list(" ") * column for r in range(row)]
+        
+        i: int = 0
+        for c in range(column):
+            for r in range(row):
+                matrix[r][c] = inputText[i]
+                i+=1
+        
         for text in matrix:
             print(*text, sep=" ")
-        for i in range(row):
-            for text in matrix:
-                decrypt += text[i].lower()
-        print(decrypt)
+            
+        decrypt: str = ""      
+        for text in matrix:
+            decrypt += ''.join(text).lower()
+            
+        print('-'*40)
+        print("Decrypted:", decrypt)
 
 
 def main() -> None:
     while True:
-        inputText: str = input("Enter your String :").replace(" ","")
-        print(inputText)
+        print(f'{'start':-^40}')
+        inputText: str = input("Enter your String :").replace(" ", "")
         column: int = int(input("Enter Column: "))
+        print("-" * 40)
         simpleColumnar(inputText=inputText, column=column)
-
+        print(f'{'end':-^40}')
 
 if __name__ == "__main__":
     main()
