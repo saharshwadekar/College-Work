@@ -68,6 +68,8 @@ def main() -> None:
     print("s:",result[2])
     print(f'{'end':-^40}')
     
+    
+
 if __name__ == '__main__':
     main()
 ################################################################
@@ -107,28 +109,27 @@ def AffineCipher(inputText: str, k1: int, k2: int):
     result: str = ""
     if inputText.islower():
         for ch in inputText: 
-            result += alphabet[((alphabet.find(ch) * k1) + k2) % 26].upper()
-        print("Encrypted:", result)
+            result += alphabet[((alphabet.find(ch) * k1) + k2) % 26]
+        print("Encrypted:", result.upper())
     else:
-        t = EEA(26, k1)
-        while t < 0:
-            t += 26
-        for ch in inputText.lower():
-            index: int = alphabet.find(ch) - k2
-            while( index < 0):
-                index += 26
-            result += alphabet[(index * t) % 26].lower()
-        print("Decrypted:", result)
+        inputText = inputText.lower()
+        k1 = EEA(26, k1)
+        k2 = 26 - k2
+        while k2 < 0:
+            k2 += 26
+        while k1 < 0:
+            k1 += 26
+        print(f'{k1=}')
+        print(f'{k2=}')
+        for ch in inputText:
+            result += alphabet[((alphabet.find(ch) + k2) * k1) % 26]
+        print("Decrypted:", result.lower())
 
 
 def main() -> None:
     print(f'{'start':-^40}')
- 
-    choice: str = input('''
-    Enter 
-    (M) for Multiplicative Cipher
-    (A) for Affine Cipher
-    Enter Your Choice: ''').lower()
+
+    choice: str = input('''(M) for Multiplicative Cipher\n(A) for Affine Cipher\nEnter Your Choice: ''').lower()
     match choice:
         case 'm':
             print('-'*40)
