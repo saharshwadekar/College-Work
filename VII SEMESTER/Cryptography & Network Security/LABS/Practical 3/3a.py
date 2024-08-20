@@ -58,14 +58,12 @@ def main() -> None:
     a: int = int(input("Enter A: "))
     b: int = int(input("Enter B: "))
     
-    result = EEA(a=a,b=b)
+    result = list(EEA(a=a,b=b))
     print(f"GCD({a},{b}) = {result[0]}")
     print("coefficients of Bezout's")
     print("t:",result[1])
     print("s:",result[2])
-    print(f'{'end':-^40}')
-    
-    
+    print(f'{'end':-^40}')   
 
 if __name__ == '__main__':
     main()

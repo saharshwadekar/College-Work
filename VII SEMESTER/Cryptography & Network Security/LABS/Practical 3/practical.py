@@ -89,7 +89,7 @@ def EEA(a: int, b: int) -> int:
     return t1
 
 
-def multiplicativeCipher(inputText: str, key: int):
+def multiplicativeCipher(inputText: str, key: int) -> None:
     alphabet: str = "abcdefghijklmnopqrstuvwxyz"
     result: str = ""
     if inputText.islower():
@@ -104,7 +104,7 @@ def multiplicativeCipher(inputText: str, key: int):
             result += alphabet[(alphabet.find(ch) * t) % 26].lower()
         print("Decrypted:", result)
         
-def AffineCipher(inputText: str, k1: int, k2: int):
+def AffineCipher(inputText: str, k1: int, k2: int) -> None:
     alphabet: str = "abcdefghijklmnopqrstuvwxyz"
     result: str = ""
     if inputText.islower():
@@ -168,7 +168,7 @@ def EEA(a: int, b: int) -> int:
         t1, t2 = t2, t
     return t1
 
-def hillCipher(text: str, matrix: list[int]):
+def hillCipher(text: str, matrix: list[int]) -> None:
     size: int = 2
     alphabet: str = 'abcdefghijklmnopqrstuvwxyz'
     flag: bool = False if text.islower() else True
