@@ -45,7 +45,7 @@ def main() -> None:
     while True:
         print(f'{'start':-^40}')
         inputText: str = input("Enter your String :").replace(" ", "")
-        column: int = int(input("Enter Column: "))
+        column: int = int(input("Enter Key(Column): "))
         print("-" * 40)
         simpleColumnar(inputText=inputText, column=column)
         print(f'{'end':-^40}')
