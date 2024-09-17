@@ -21,17 +21,16 @@ void first(map<char, vector<string>> &regex, char ch, set<char> &F)
 void follow(map<char, vector<string>> &regex, char ch, set<char> &F, char startSymbol, set<char> &visited)
 {
     if (visited.find(ch) != visited.end())
-        visited.insert(ch);
-    else
         return;
+    visited.insert(ch);
     if (ch == startSymbol)
     {
         F.insert('$');
     }
-
     for (auto &rule : regex)
     {
         vector<string> exp = rule.second;
+
         for (const auto &t : exp)
         {
             for (size_t i = 0; i < t.length(); ++i)
@@ -41,10 +40,11 @@ void follow(map<char, vector<string>> &regex, char ch, set<char> &F, char startS
                     if (i + 1 < t.length())
                     {
                         char nextChar = t[i + 1];
-                        if (isupper(nextChar))
+                        if (isupper(nextChar)) 
                         {
                             set<char> tempFirst;
                             first(regex, nextChar, tempFirst);
+
                             if (tempFirst.find('#') != tempFirst.end())
                             {
                                 tempFirst.erase('#');
@@ -73,6 +73,7 @@ void follow(map<char, vector<string>> &regex, char ch, set<char> &F, char startS
         }
     }
 }
+
 
 int main()
 {
@@ -132,6 +133,5 @@ int main()
         }
         cout << endl;
     }
-
     return 0;
 }

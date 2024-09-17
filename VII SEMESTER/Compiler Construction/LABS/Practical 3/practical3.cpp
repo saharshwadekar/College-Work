@@ -1,12 +1,4 @@
-#include <iostream>
-#include <string>
-#include <cctype>
-#include <vector>
-#include <unordered_set>
-#include <unordered_map>
-#include <algorithm>
-
-
+#include <bits/stdc++.h>
 using namespace std;
 
 enum TokenType {
@@ -75,7 +67,6 @@ vector<Token> lexicalAnalyser(const string& s) {
         }
         ++i;
     }
-    // Finalize the last token if any
     if (!token.empty()) {
         tokens.push_back({token, identifyToken(token)});
     }
@@ -86,14 +77,14 @@ vector<Token> lexicalAnalyser(const string& s) {
 void printTokens(const vector<Token>& tokens) {
     for (const auto& token : tokens) {
         if (token.value.empty()) continue; // Skip empty tokens
-        cout << "Token: \"" << token.value << "\" Type: ";
+        cout << "Token: <" << token.value << ", ";
         switch (token.type) {
-            case KEYWORD: cout << "KEYWORD"; break;
-            case IDENTIFIER: cout << "IDENTIFIER"; break;
-            case CONSTANT: cout << "CONSTANT"; break;
-            case OPERATOR: cout << "OPERATOR"; break;
-            case PUNCTUATION: cout << "PUNCTUATION"; break;
-            default: cout << "UNKNOWN"; break;
+            case KEYWORD: cout << "KEYWORD >"; break;
+            case IDENTIFIER: cout << "IDENTIFIER >"; break;
+            case CONSTANT: cout << "CONSTANT >"; break;
+            case OPERATOR: cout << "OPERATOR >"; break;
+            case PUNCTUATION: cout << "PUNCTUATION >"; break;
+            default: cout << "UNKNOWN >"; break;
         }
         cout << endl;
     }
