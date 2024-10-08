@@ -74,6 +74,11 @@ void follow(map<char, vector<string>> &regex, char ch, set<char> &F, char startS
     }
 }
 
+void predictiveParsing(map<char, vector<string>> &regex)
+{
+        
+}
+
 int main()
 {
     map<char, vector<string>> regex;
@@ -132,5 +137,21 @@ int main()
         }
         cout << endl;
     }
+
+    predictiveParsing(regex);
+
     return 0;
 }
+
+
+// How many regular Expressions: 5
+// Enter Header: E
+// E->TW
+// Enter Header: W
+// W->+TW|#
+// Enter Header: T
+// T->FR
+// Enter Header: R
+// R->*FR|#
+// Enter Header: F
+// F->i|(E)
