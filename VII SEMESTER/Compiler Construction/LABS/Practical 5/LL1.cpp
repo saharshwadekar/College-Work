@@ -74,9 +74,18 @@ void follow(map<char, vector<string>> &regex, char ch, set<char> &F, char startS
     }
 }
 
-void predictiveParsing(map<char, vector<string>> &regex)
+void printTable(map<char, map<char, string>> &table)
 {
-        
+    cout << "\nLL(1) Parsing Table:\n";
+    for (auto &row : table)
+    {
+        cout << row.first << " : ";
+        for (auto &col : row.second)
+        {
+            cout << "[" << col.first << " -> " << col.second << "] ";
+        }
+        cout << endl;
+    }
 }
 
 int main()
@@ -109,49 +118,50 @@ int main()
         regex[header] = expression;
     }
 
-    cout << "\nFIRST sets:\n";
+    map<char, map<char, string>> table;
+
     for (auto &it : regex)
     {
         set<char> F;
         char ch = it.first;
         first(regex, ch, F);
-        cout << ch << " -> ";
-        for (auto &str : F)
+        for (auto &str : it.second)
         {
-            cout << str << ' ';
+            set<char> firstSet;
+            if (isupper(str[0]))
+            {
+                first(regex, str[0], firstSet);
+            }
+            else
+            {
+                firstSet.insert(str[0]);
+            }
+
+            for (auto &terminal : firstSet)
+            {
+                if (terminal != '#')
+                {
+                    table[ch][terminal] = str;
+                }
+                else
+                {
+                    set<char> followSet;
+                    set<char> visited;
+                    follow(regex, ch, followSet, startSymbol, visited);
+                    for (auto &f : followSet)
+                    {
+                        table[ch][f] = str;
+                    }
+                    if (followSet.find('$') != followSet.end())
+                    {
+                        table[ch]['$'] = str;
+                    }
+                }
+            }
         }
-        cout << endl;
     }
 
-    cout << "\nFOLLOW sets:\n";
-    for (auto &it : regex)
-    {
-        set<char> F;
-        char ch = it.first;
-        set<char> visited;
-        follow(regex, ch, F, startSymbol, visited);
-        cout << ch << " -> ";
-        for (auto &str : F)
-        {
-            cout << str << ' ';
-        }
-        cout << endl;
-    }
-
-    predictiveParsing(regex);
+    printTable(table);
 
     return 0;
 }
-
-
-// How many regular Expressions: 5
-// Enter Header: E
-// E->TW
-// Enter Header: W
-// W->+TW|#
-// Enter Header: T
-// T->FR
-// Enter Header: R
-// R->*FR|#
-// Enter Header: F
-// F->i|(E)
