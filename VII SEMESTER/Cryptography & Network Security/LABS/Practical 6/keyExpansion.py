@@ -57,9 +57,9 @@ def KeyExpansion(WordList):
         KeyList.append(row)
         
 def main():
-    # wordrow = list(input("Enter Your Key (in format XXXX XXXX XXXX XXXX): ").lower().split(" "))
+    wordrow = list(input("Enter Your Key (in format XXXX XXXX XXXX XXXX): ").lower().split(" "))
     
-    wordrow = ['2475a2b3', '34755688', '31e21200', '13aa5487']
+    # wordrow = ['2475a2b3', '34755688', '31e21200', '13aa5487']
 
     if len(wordrow) != 4:
         print("There must be 4 input keys")

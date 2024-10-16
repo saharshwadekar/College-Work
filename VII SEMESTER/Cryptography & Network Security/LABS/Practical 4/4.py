@@ -50,8 +50,7 @@ def feistelCipher(word: str, keys: list[str], PTable: list[int], SBox: dict[str,
     left, right = splitWord(word)
     
     print(f'{left=:^10} {right=:^10}')
-    
-    
+
     for i in range(rounds):
       print(f'='*40)
       print(f'Round: {i+1}')

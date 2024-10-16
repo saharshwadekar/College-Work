@@ -140,8 +140,11 @@ def main() -> None:
     for key, text in zip(keywords, plaintext):
         if len(key) != 8 or len(text) != 8:
             print("Each input key must be 8 hex characters long!")
-            return  
-
+            return 
+         
+    print("-"*60)
+    print(f'|{'Round':^10}|{'Input State':^15}|{'Output State':^15}|{'Round Key':^15}|')
+    print("-"*60)
     advanceEncryptionStandard(plaintext, keywords)
 
 if __name__ == "__main__":
