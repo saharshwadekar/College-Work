@@ -57,7 +57,7 @@ def KeyExpansion(WordList):
         KeyList.append(row)
         
 def main():
-    # wordrow = list(input("Enter Your Key (in format XXXX XXXX XXXX XXXX): ").split(" "))
+    # wordrow = list(input("Enter Your Key (in format XXXX XXXX XXXX XXXX): ").lower().split(" "))
     
     wordrow = ['2475a2b3', '34755688', '31e21200', '13aa5487']
 
