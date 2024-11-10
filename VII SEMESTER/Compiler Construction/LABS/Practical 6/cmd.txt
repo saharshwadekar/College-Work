@@ -1,0 +1,15 @@
+flex lexer.l  ==> lex.yy.c file
+
+gcc lex.yy.c ==> a.exe
+
+a.exe
+
+
+YACC:
+
+bison -d *.y
+
+flex *.l
+gcc lex.yy.c *.tab.c
+
+a.exe

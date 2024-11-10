@@ -1,0 +1,10 @@
+1. Categorizing news articles into topics like sports, politics or technology.
+2. Translating any French statement into English
+3. Assisting a doctor in diagnosing disease from medical images of patient data
+4. Implementing comp vision for object detection, path planning and real time decision making.
+5. Image classification for medical imaging 
+6. Anomalies detection in Network Security.
+7. Social Network Analysis for influencer identification.
+8. Create image from text.
+9. Intelligent Video Cervi lance (Real time activity and behaviour recognition)
+10. Forensic Image analysis (deep fake detection and verification)

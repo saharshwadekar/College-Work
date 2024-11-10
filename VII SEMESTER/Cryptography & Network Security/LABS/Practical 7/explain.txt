@@ -1,0 +1,6 @@
+
+input State Arra
+key scheduling - itert : size of State Array
+
+
+Stream generateion : size of key

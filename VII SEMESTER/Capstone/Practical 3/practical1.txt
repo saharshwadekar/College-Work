@@ -1,0 +1,132 @@
+                                    PRACTICAL NO: 3
+
+AIM: Assisting a doctor in diagnosing disease from medical images of patient data
+
+--------------------------------------------CODE--------------------------------------------
+
+# !kaggle datasets download -d paultimothymooney/chest-xray-pneumonia
+# !unzip chest-xray-pneumonia.zip
+
+import tensorflow as tf
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import matplotlib.pyplot as plt
+import os
+import numpy as np
+from tensorflow.keras.preprocessing import image
+
+train_dir = "/content/chest_xray/train"
+val_dir = "/content/chest_xray/val"
+test_dir = "/content/chest_xray/test"
+
+train_datagen = ImageDataGenerator(
+    rescale=1./255,
+    shear_range=0.2,
+    zoom_range=0.2,
+    horizontal_flip=True
+)
+
+val_datagen = ImageDataGenerator(rescale=1./255)
+test_datagen = ImageDataGenerator(rescale=1./255)
+
+train_generator = train_datagen.flow_from_directory(
+    train_dir,
+    target_size=(150, 150),
+    batch_size=32,
+    class_mode='binary'
+)
+
+val_generator = val_datagen.flow_from_directory(
+    val_dir,
+    target_size=(150, 150),
+    batch_size=32,
+    class_mode='binary'
+)
+
+test_generator = test_datagen.flow_from_directory(
+    test_dir,
+    target_size=(150, 150),
+    batch_size=32,
+    class_mode='binary'
+)
+
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(150, 150, 3)),
+    tf.keras.layers.MaxPooling2D(2, 2),
+    tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),
+    tf.keras.layers.MaxPooling2D(2, 2),
+    tf.keras.layers.Conv2D(128, (3, 3), activation='relu'),
+    tf.keras.layers.MaxPooling2D(2, 2),
+    tf.keras.layers.Conv2D(128, (3, 3), activation='relu'),
+    tf.keras.layers.MaxPooling2D(2, 2),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(512, activation='relu'),
+    tf.keras.layers.Dense(1, activation='sigmoid')  
+])
+
+model.compile(
+    loss='binary_crossentropy',
+    optimizer=tf.keras.optimizers.Adam(),
+    metrics=['accuracy']
+)
+
+history = model.fit(
+    train_generator,
+    steps_per_epoch=train_generator.samples // 32,
+    epochs=10,
+    validation_data=val_generator,
+    validation_steps=val_generator.samples // 32
+)
+
+test_loss, test_acc = model.evaluate(test_generator, steps=test_generator.samples // 32)
+print(f"Test Accuracy: {test_acc * 100:.2f}%")
+
+acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs_range = range(len(acc))
+
+plt.figure(figsize=(8, 8))
+plt.subplot(1, 2, 1)
+plt.plot(epochs_range, acc, label='Training Accuracy')
+plt.plot(epochs_range, val_acc, label='Validation Accuracy')
+plt.legend(loc='lower right')
+plt.title('Training and Validation Accuracy')
+
+plt.subplot(1, 2, 2)
+plt.plot(epochs_range, loss, label='Training Loss')
+plt.plot(epochs_range, val_loss, label='Validation Loss')
+plt.legend(loc='upper right')
+plt.title('Training and Validation Loss')
+plt.show()
+
+sample_image = r'/content/chest_xray/test/PNEUMONIA/person100_bacteria_475.jpeg' 
+img = image.load_img(sample_image, target_size=(150, 150))
+img_array = image.img_to_array(img) / 255.0
+img_array = np.expand_dims(img_array, axis=0)
+
+prediction = model.predict(img_array)
+print(f'Predicted Label: {"Pneumonia" if prediction > 0.5 else "Normal"}')
+
+-------------------------------------------OUTPUT-------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1/1 ━━━━━━━━━━━━━━━━━━━━ 1s 1s/step
+Predicted Label: Pneumonia

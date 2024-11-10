@@ -1,0 +1,46 @@
+                                    PRACTICAL NO: 8
+
+AIM: Create image from text.
+
+--------------------------------------------CODE--------------------------------------------
+
+from PIL import Image, ImageDraw, ImageFont
+
+def create_text_image(text, font_size=40, text_color="black", bg_color="white", image_size=(500, 300)):
+    img = Image.new("RGB", image_size, color=bg_color)
+    draw = ImageDraw.Draw(img)
+    
+    try:
+        font = ImageFont.truetype("arial.ttf", font_size)
+    except IOError:
+        font = ImageFont.load_default()
+
+    text_bbox = draw.textbbox((0, 0), text, font=font)
+    text_width = text_bbox[2] - text_bbox[0]
+    text_height = text_bbox[3] - text_bbox[1]
+    text_x = (image_size[0] - text_width) // 2
+    text_y = (image_size[1] - text_height) // 2
+
+    draw.text((text_x, text_y), text, fill=text_color, font=font)
+    
+    img.show() 
+    img.save("text_image.png")
+
+create_text_image("Hello, World!", font_size=50, text_color="blue", bg_color="lightyellow")
+
+-------------------------------------------OUTPUT-------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

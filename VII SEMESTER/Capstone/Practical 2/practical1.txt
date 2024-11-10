@@ -1,0 +1,23 @@
+                                    PRACTICAL NO: 2
+
+AIM: Translating any French statement into English
+
+--------------------------------------------CODE--------------------------------------------
+
+from googletrans import Translator
+
+translator = Translator()
+
+def translate_french_to_english(french_text):
+    translation = translator.translate(french_text, src='fr', dest='en')
+    return translation.text
+
+french_statement = "Bonjour, comment allez-vous ?"
+
+translated_text = translate_french_to_english(french_statement)
+print(f"Original: {french_statement}\nTranslated: {translated_text}")
+
+-------------------------------------------OUTPUT-------------------------------------------
+
+Original: Bonjour, comment allez-vous ?
+Translated: Good morning, how are you doing ?
