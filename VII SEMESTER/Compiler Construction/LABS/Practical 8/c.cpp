@@ -133,34 +133,34 @@ int main() {
     return 0;
 }
 
-OUTPUT:
+// OUTPUT:
 
-<UNKNOWN, #>
-<IDENTIFIER, include>
-<OPERATOR, <>
-<IDENTIFIER, iostream>
-<OPERATOR, >>
-<IDENTIFIER, using>
-<IDENTIFIER, namespace>
-<IDENTIFIER, std>
-<SEPARATOR, ;>
-<KEYWORD, int>
-<KEYWORD, main>
-<SEPARATOR, (>
-<SEPARATOR, )>
-<SEPARATOR, {>
-<IDENTIFIER, cout>
-<OPERATOR, <>
-<OPERATOR, <>
-<UNKNOWN, '>
-<IDENTIFIER, Hello>
-<IDENTIFIER, World>
-<UNKNOWN, '>
-<OPERATOR, <>
-<OPERATOR, <>
-<IDENTIFIER, endl>
-<SEPARATOR, ;>
-<KEYWORD, return>
-<LITERAL, 0>
-<SEPARATOR, ;>
-<SEPARATOR, }>
+// <UNKNOWN, #>
+// <IDENTIFIER, include>
+// <OPERATOR, <>
+// <IDENTIFIER, iostream>
+// <OPERATOR, >>
+// <IDENTIFIER, using>
+// <IDENTIFIER, namespace>
+// <IDENTIFIER, std>
+// <SEPARATOR, ;>
+// <KEYWORD, int>
+// <KEYWORD, main>
+// <SEPARATOR, (>
+// <SEPARATOR, )>
+// <SEPARATOR, {>
+// <IDENTIFIER, cout>
+// <OPERATOR, <>
+// <OPERATOR, <>
+// <UNKNOWN, '>
+// <IDENTIFIER, Hello>
+// <IDENTIFIER, World>
+// <UNKNOWN, '>
+// <OPERATOR, <>
+// <OPERATOR, <>
+// <IDENTIFIER, endl>
+// <SEPARATOR, ;>
+// <KEYWORD, return>
+// <LITERAL, 0>
+// <SEPARATOR, ;>
+// <SEPARATOR, }>
